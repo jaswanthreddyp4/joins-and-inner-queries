@@ -1,0 +1,31 @@
+
+CREATE TABLE `demo`.`team` (
+  `id` INT NOT NULL,
+  `teamName` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
+
+INSERT INTO `demo`.`team` (`id`, `teamName`) VALUES ('1', 'front end ');
+INSERT INTO `demo`.`team` (`id`, `teamName`) VALUES ('2', 'storage');
+INSERT INTO `demo`.`team` (`id`, `teamName`) VALUES ('3', 'java development');
+INSERT INTO `demo`.`team` (`id`, `teamName`) VALUES ('4', 'gen ai');
+
+CREATE TABLE `demo`.`employee` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `yearsOfExperience` INT NULL,
+  `teamId` INT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_team`
+    FOREIGN KEY (`teamId`)
+    REFERENCES `demo`.`team` (`id`)
+    ON UPDATE CASCADE
+    ON DELETE SET NULL
+);
+
+INSERT INTO `demo`.`employee` (`id`, `name`, `yearsOfExperience`, `teamId`) VALUES ('1', 'aaradhana', '3', '3');
+INSERT INTO `demo`.`employee` (`id`, `name`, `yearsOfExperience`, `teamId`) VALUES ('2', 'alekhya', '1', '2');
+INSERT INTO `demo`.`employee` (`id`, `name`, `yearsOfExperience`, `teamId`) VALUES ('3', 'anuradha', '0', '2');
+INSERT INTO `demo`.`employee` (`id`, `name`, `yearsOfExperience`, `teamId`) VALUES ('4', 'jaswanth', '0', '4');
+INSERT INTO `demo`.`employee` (`id`, `name`, `yearsOfExperience`, `teamId`) VALUES ('5', 'mythili', '1', '4');
+
